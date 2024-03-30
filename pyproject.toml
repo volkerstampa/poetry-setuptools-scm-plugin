@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "poetry-setuptools-scm-plugin"
+version = "0.1.0"
+description = "Poetry Plugin that uses setuptools-scm to determine version"
+authors = ["Volker Stampa <Volker.Stampa@gmx.net>"]
+maintainers = ["Volker Stampa <Volker.Stampa@gmx.net>"]
+readme = "README.md"
+license = "Apache-2.0"
+keywords = ["poetry", "plugin", "version", "git"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."poetry.plugin"]
+poetry-setuptools-scm-plugin = "poetry_setuptools_scm_plugin.plugin:SetuptoolsScmPlugin"
+
+[tool.pytest.ini_options]
+cache_dir = "build/pytest_cache"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+setuptools-scm = "^8.0.4"
+poetry = "^1.8.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+tomli-w = "^1.0.0"
