@@ -25,6 +25,19 @@ poetry-setuptools-scm-plugin = "poetry_setuptools_scm_plugin.plugin:SetuptoolsSc
 [tool.pytest.ini_options]
 cache_dir = "build/pytest_cache"
 
+[tool.ruff]
+line-length = 100
+cache-dir = "build/ruff_cache"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D100", "D101", "D102", "D103", "D104", "D203", "D213",
+    "ANN101",
+    "S101",
+    "FA102",
+    "COM812",
+    "FBT001", "FBT002"]
+
 [tool.poetry.dependencies]
 python = "^3.10"
 setuptools-scm = "^8.0.4"
@@ -33,3 +46,4 @@ poetry = "^1.8.2"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
 tomli-w = "^1.0.0"
+ruff = "^0.3.4"

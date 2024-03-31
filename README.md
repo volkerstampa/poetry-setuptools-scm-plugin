@@ -53,7 +53,13 @@ poetry shell
 pytest
 ```
 
-## build
+## Check
+
+```bash
+ruff check
+```
+
+## Build
 
 ´´´bash
 poetry build
