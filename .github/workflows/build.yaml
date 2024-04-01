@@ -1,0 +1,35 @@
+name: Check
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snok/install-poetry@v1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "poetry"
+      - run: poetry install
+      - run: poetry run ./check.sh
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: check
+    environment: ${{ github.ref_type == 'tag' && 'release' || 'test' }}
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snok/install-poetry@v1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "poetry"
+      - run: '[[ "${{ vars.PYPI_REPOSITORY }}" == "testpypi" ]] && poetry config repositories.testpypi https://test.pypi.org/legacy/'
+      - run: poetry config pypi-token.${{ vars.PYPI_REPOSITORY }} ${{ secrets.PYPI_TOKEN }}
+      - run: poetry publish --build --repository ${{ vars.PYPI_REPOSITORY }}
