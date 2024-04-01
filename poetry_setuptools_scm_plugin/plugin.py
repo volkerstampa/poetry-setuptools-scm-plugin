@@ -11,6 +11,8 @@ from setuptools_scm._cli import main
 
 class SetuptoolsScmPlugin(Plugin):
     def activate(self, poetry: Poetry, io: IO) -> None:
+        if not self.setuptools_scm_config_exists(poetry):
+            return
         setuptools_scm_output = StringIO()
         try:
             with redirect_stdout(setuptools_scm_output):
@@ -21,3 +23,7 @@ class SetuptoolsScmPlugin(Plugin):
             raise
         # noinspection PyProtectedMember
         poetry.package._set_version(setuptools_scm_output.getvalue())  # noqa: SLF001
+
+    @staticmethod
+    def setuptools_scm_config_exists(poetry: Poetry) -> bool:
+        return poetry.pyproject.data.get("tool", {}).get("setuptools_scm") is not None

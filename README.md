@@ -1,19 +1,20 @@
-Poetry Setuptools SCM Plugin
-============================
+# Poetry Setuptools SCM Plugin
 
 poetry-setuptools-scm-plugin is a [Poetry](https://python-poetry.org/) plugin that uses 
 [setuptools_scm](https://github.com/pypa/setuptools_scm) to extract a package version from [git](https://git-scm.com/) 
 or [Mercurial](https://www.mercurial-scm.org/) metadata.
 
-# Installation
+## Installation
 
-Execute the following in your Poetry-based project:
+Add the plugin to Poetry:
 
 ```bash
 poetry self add poetry-setuptools-scm-plugin
 ```
 
-To prevent warnings from setuptools_scm also add the following to your `pyproject.toml`:
+## Usage
+
+To enable it in your Poetry-based project add the following to your `pyproject.toml`:
 
 ```toml
 [tool.setuptools_scm]
@@ -23,9 +24,23 @@ With this the version specified in `version` of the `tool.poetry` section in `py
 the version derived by `setuptools_scm` is used instead. See [its documentation](https://setuptools-scm.readthedocs.io/)
 on further configuration options.
 
-# Development
+> [!NOTE]
+> The Poetry team believes 
+> ["that the version is one of the static metadata and the pyproject.toml is the single source of truth for it"](
+> https://github.com/python-poetry/poetry/issues/4971#issuecomment-1013930810).  
 
-## Prerequisites
+
+## Similar tools
+
+- [poetry-version-plugin](https://github.com/tiangolo/poetry-version-plugin/):
+  This plugin allows to read the version either from a git tag or a version definition in an `__init__.py` file. To my
+  latest knowledge it cannot derive dev-versions from git.
+
+
+
+## Development
+
+### Prerequisites
 
 - Python >=3.10, can for example be installed with [pyenv](https://github.com/pyenv/pyenv):
    ```bash
@@ -35,33 +50,34 @@ on further configuration options.
 
 - [Poetry](https://python-poetry.org/docs/#installation) >=1.2
 
-## Setup
+### Setup
 
 ```bash
 poetry install
 ```
 
-To simplify running command in the Poetry environment:
+To simplify running commands in the Poetry environment:
 
 ```bash
 poetry shell
 ```
 
-## Test
+The following section assume that the commands are executed from such a Poetry shell.
+
+### Test
 
 ```bash
 pytest
 ```
 
-## Check
+### Check
 
 ```bash
 ruff check
 ```
 
-## Build
+### Build
 
-´´´bash
+```bash
 poetry build
-poetry publish
 ```
