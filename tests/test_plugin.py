@@ -21,8 +21,9 @@ def test_build_without_git(tmp_path: Path) -> None:
     result = _poetry_build_in(tmp_path)
 
     assert result.returncode != 0
-    assert "no version" in result.stderr
-    assert "not in a source repository supported by setuptools_scm" in result.stderr
+    # error message depends on python environment
+    assert ("not in a source repository supported by setuptools_scm" in result.stderr
+            or "LookupError: setuptools-scm was unable to detect version" in result.stderr)
 
 
 def test_build_with_git_tag(tmp_path: Path) -> None:
