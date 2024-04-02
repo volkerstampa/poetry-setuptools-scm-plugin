@@ -23,6 +23,8 @@ jobs:
     needs: check
     environment: ${{ github.ref_type == 'tag' && 'release' || 'test' }}
     if: ${{ github.event_name == 'push' }}
+    env:
+      PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: snok/install-poetry@v1
@@ -30,6 +32,4 @@ jobs:
         with:
           python-version: "3.10"
           cache: "poetry"
-      - run: '[[ "${{ vars.PYPI_REPOSITORY }}" == "testpypi" ]] && poetry config repositories.testpypi https://test.pypi.org/legacy/'
-      - run: poetry config pypi-token.${{ vars.PYPI_REPOSITORY }} ${{ secrets.PYPI_TOKEN }}
-      - run: poetry publish --build --repository ${{ vars.PYPI_REPOSITORY }}
+      - run: ./publish.sh ${{ vars.PYPI_REPOSITORY }}
