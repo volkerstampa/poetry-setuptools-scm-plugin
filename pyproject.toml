@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-setuptools-scm-plugin"
-version = "0.1.0"
+version = "0.1.0dev1"
 description = "Poetry Plugin that uses setuptools-scm to determine version"
 homepage = "https://github.com/volkerstampa/poetry-setuptools-scm-plugin"
 authors = ["Volker Stampa <Volker.Stampa@gmx.net>"]
