@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-setuptools-scm-plugin"
-version = "0.1.0"
+version = "0"  # ignored
 description = "Poetry Plugin that uses setuptools-scm to determine version"
 homepage = "https://github.com/volkerstampa/poetry-setuptools-scm-plugin"
 authors = ["Volker Stampa <Volker.Stampa@gmx.net>"]
@@ -19,6 +19,9 @@ classifiers = [
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.setuptools_scm]
+local_scheme = "poetry_setuptools_scm_plugin:no_local_scheme"
 
 [tool.poetry.plugins."poetry.plugin"]
 poetry-setuptools-scm-plugin = "poetry_setuptools_scm_plugin.plugin:SetuptoolsScmPlugin"

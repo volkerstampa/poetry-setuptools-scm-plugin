@@ -50,6 +50,11 @@ on further configuration options.
 
 - [Poetry](https://python-poetry.org/docs/#installation) >=1.2
 
+- the latest release of the plugin installed in poetry
+  ```bash
+  poetry self add poetry-setuptools-scm-plugin
+  ```
+
 ### Setup
 
 ```bash
