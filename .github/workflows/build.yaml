@@ -34,4 +34,4 @@ jobs:
         with:
           python-version: "3.10"
           cache: "poetry"
-      - run: ./publish.sh ${{ vars.PYPI_REPOSITORY }}
+      - run: ./publish.sh ${{ vars.PYPI_REPOSITORY }}  ${{ github.ref_name != 'main' && '--build-only' || '' }}
