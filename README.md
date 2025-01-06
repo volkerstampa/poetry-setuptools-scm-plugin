@@ -42,11 +42,11 @@ on further configuration options.
 
 ### Prerequisites
 
-- Python >=3.10, can for example be installed with [pyenv](https://github.com/pyenv/pyenv):
+- Python >=3.11, can for example be installed with [pyenv](https://github.com/pyenv/pyenv):
 
   ```bash
-  pyenv install 3.10
-  pyenv local 3.10
+  pyenv install 3.11
+  pyenv local 3.11
   ```
 
 - [Poetry](https://python-poetry.org/docs/#installation) >=1.2

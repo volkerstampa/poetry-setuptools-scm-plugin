@@ -43,7 +43,7 @@ ignore = ["D100", "D101", "D102", "D103", "D104", "D203", "D213",
     "FBT001", "FBT002"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 setuptools-scm = "^8.0.4"
 poetry = ">=1.8.2,<3.0.0"
 
