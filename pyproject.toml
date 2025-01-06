@@ -45,7 +45,7 @@ ignore = ["D100", "D101", "D102", "D103", "D104", "D203", "D213",
 [tool.poetry.dependencies]
 python = "^3.10"
 setuptools-scm = "^8.0.4"
-poetry = "^1.8.2"
+poetry = ">=1.8.2,<3.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
