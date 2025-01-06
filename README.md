@@ -68,6 +68,12 @@ To simplify running commands in the Poetry environment:
 poetry shell
 ```
 
+Note that for poetry > 2 this requires installing a plugin:
+
+```bash
+poetry self add poetry-plugin-shell
+```
+
 The following section assume that the commands are executed from such a Poetry shell.
 
 ### Test
